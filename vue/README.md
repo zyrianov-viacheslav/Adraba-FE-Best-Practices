@@ -190,6 +190,194 @@
 ```
 <br><br>
 
+## Script
+
+#### Use single quotes and backticks instead of double quotes
+
+###### Bad:
+```
+  foo: "",
+  bar: slug + "/files"
+```
+###### Good:
+```
+  foo: '',
+  bar: `${slug}/files`
+```
+<br><br>
+
+
+#### Follow imports order
+
+###### Bad:
+```
+import { mapActions, mapGetters } from 'vuex'
+import { required } from 'vuelidate/lib/validators'
+import lodash from 'lodash'
+import NewFormInterpritation from './NewFormInterpritation'
+import preparePayload from '@/utils/preparePayload'
+import { merge, path, pathOr, isEmpty } from 'ramda'
+```
+###### Good:
+```
+// Vuex
+import { mapActions, mapGetters } from 'vuex'
+
+// Components
+import NewFormInterpritation from './NewFormInterpritation'
+import CustormFormField from './NewCustormFormField'
+
+// Libs, utils, modules
+import { required } from 'vuelidate/lib/validators'
+import { merge, path, pathOr, isEmpty } from 'ramda'
+import preparePayload from '@/utils/preparePayload'
+import lodash from 'lodash'
+```
+<br><br>
+
+
+#### Follow component [options order](https://vuejs.org/v2/style-guide/#Component-instance-options-order-recommended)
+
+###### Bad:
+```
+components
+name
+data
+methods
+mounted
+created
+props
+computed
+// ...
+```
+###### Good:
+```
+name
+components
+mixins
+props
+data
+computed
+watch
+methods
+lifecycle methods in order they are called
+```
+<br><br>
+
+
+#### Split actions and getters into multiple lines while mapping
+
+###### Bad:
+```
+...mapGetters(['agendaSettings', 'locationsList', 'sessionsList', 'totalSessionsPages', 'totalSessionsItems'])
+```
+###### Good:
+```
+...mapGetters([
+  'agendaSettings',
+  'locationsList',
+  'sessionsList',
+  'totalSessionsPages',
+  'totalSessionsItems'
+])
+```
+<br><br>
+
+
+#### Avoid "Can not read prop of undefined". Use [ramda pathOr method](http://ramdajs.com/docs/#pathOr) or atleast do check
+
+###### Bad:
+```
+object.nested.prop
+```
+###### Good:
+```
+pathOr('', ['nested', 'prop'], object)
+```
+```
+if (object && object.nested) {
+  object.nested.prop
+}
+```
+<br><br>
+
+
+#### Do NOT mutate. Use [ramda clone](http://ramdajs.com/docs/#clone) or ES6 destructure
+
+###### Bad:
+```
+1. Object copy
+obj1 = obj2
+
+2. Array copy
+arr1 = arr1
+
+3. Add item
+arr.push()
+
+4. Remove item
+arr.splice(2, 1)
+```
+###### Good:
+```
+1. Object copy
+obj1 = clone(obj2)
+obj1 = { ...obj2 }
+
+2. Array copy
+arr1 = [...arr2]
+
+3. Add item
+arr = [...arr, newItem]
+
+4. Remove item
+arr = arr.filter((item, i) => i !== indexToDelete)
+```
+<br><br>
+
+
+#### Use ternary operator
+
+###### Bad:
+```
+if (condition) {
+  return a
+} else {
+  return b
+}
+```
+###### Good:
+```
+return condition
+  ? a
+  : b
+```
+<br><br>
+
+
+#### Don't forget to stop listening for eventBus event in beforeDestroy
+
+###### Bad:
+```
+created () {
+  // start listening
+  this.$bus.$on('modalChangeVisibility', ...)
+}
+```
+###### Good:
+```
+created () {
+  // start listening
+  this.$bus.$on('modalChangeVisibility', ...)
+},
+beforeDestroy () {
+  // stop listening (don't pass callback in $off)
+  this.$bus.$off('modalChangeVisibility')
+}
+```
+<br><br>
+
+
 ## Vuex
 
 #### Mostly start mutation name from `SET`
