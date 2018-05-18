@@ -5,11 +5,11 @@
 #### Use component self-closing tag if there is no slots
 
 ###### Bad:
-```
+```html
   <Component></Component>
 ```
 ###### Good:
-```
+```html
   <Component />
 ```
 <br><br>
@@ -18,10 +18,10 @@
 #### If there is more than 2 props split them in multiple lines and follow [props order](https://vuejs.org/v2/style-guide/#Element-attribute-order-recommended)
 
 ###### Bad:
-```
+```html
   <Component @click="handleClick" :type="foo" :theme="bar" v-else @change="handleChange" :active="false" />
 ```
-```
+```html
   <Component @click="handleClick"
              :type="foo"
              :theme="bar"
@@ -30,7 +30,7 @@
              :active="false"></Component>
 ```
 ###### Good:
-```
+```html
   <Component
     v-else
     :active="false"
@@ -46,11 +46,11 @@
 #### Use double quotes in `template` and single in `script`
 
 ###### Bad:
-```
+```html
   <Component type='foo' class="bar" />
 ```
 ###### Good:
-```
+```html
   <Component
     type="foo"
     class="bar"
@@ -62,11 +62,11 @@
 #### Use computed property instead of conditions
 
 ###### Bad:
-```
+```html
   <Component v-if="accessToken && user.data" />
 ```
 ###### Good:
-```
+```html
   <Component v-if="isLogedIn" />
 
   // ...
@@ -80,11 +80,11 @@
 #### Always use `key` with `v-for`
 
 ###### Bad:
-```
+```html
   <Component v-for="item in items" />
 ```
 ###### Good:
-```
+```html
   <Component
     v-for="(item, i) in items"
     :key="`item-${i}`"
@@ -96,13 +96,13 @@
 #### Passing slots
 
 ###### Bad:
-```
+```html
   <Component
     @click="handleClick"
     :active="false"
     :type="foo">Submit</Component>
 ```
-```
+```html
   <Component
     @click="handleClick"
     :active="false"
@@ -110,7 +110,7 @@
   >Submit</Component>
 ```
 ###### Good:
-```
+```html
   <Component
     :active="false"
     :type="foo"
@@ -125,7 +125,7 @@
 #### Split a lot of markup with comments
 
 ###### Bad:
-```
+```html
 <div v-if="isRegular" class="related-session-inner_regular">
   <h4 class="related-session-inner__header">
     {{ time }}
@@ -155,7 +155,7 @@
 ```
 
 ###### Good:
-```
+```html
 <!-- REGULAR ITEM -->
 <div v-if="isRegular" class="related-session-inner_regular">
   <h4 class="related-session-inner__header">
@@ -195,12 +195,12 @@
 #### Use single quotes and backticks instead of double quotes
 
 ###### Bad:
-```
+```javascript
   foo: "",
   bar: slug + "/files"
 ```
 ###### Good:
-```
+```javascript
   foo: '',
   bar: `${slug}/files`
 ```
@@ -210,7 +210,7 @@
 #### Follow imports order
 
 ###### Bad:
-```
+```javascript
 import { mapActions, mapGetters } from 'vuex'
 import { required } from 'vuelidate/lib/validators'
 import lodash from 'lodash'
@@ -219,7 +219,7 @@ import preparePayload from '@/utils/preparePayload'
 import { merge, path, pathOr, isEmpty } from 'ramda'
 ```
 ###### Good:
-```
+```javascript
 // Vuex
 import { mapActions, mapGetters } from 'vuex'
 
@@ -239,7 +239,7 @@ import lodash from 'lodash'
 #### Follow component [options order](https://vuejs.org/v2/style-guide/#Component-instance-options-order-recommended)
 
 ###### Bad:
-```
+```javascript
 components
 name
 data
@@ -251,7 +251,7 @@ computed
 // ...
 ```
 ###### Good:
-```
+```javascript
 name
 components
 mixins
@@ -268,11 +268,11 @@ lifecycle methods in order they are called
 #### Split actions and getters into multiple lines while mapping
 
 ###### Bad:
-```
+```javascript
 ...mapGetters(['agendaSettings', 'locationsList', 'sessionsList', 'totalSessionsPages', 'totalSessionsItems'])
 ```
 ###### Good:
-```
+```javascript
 ...mapGetters([
   'agendaSettings',
   'locationsList',
@@ -287,14 +287,14 @@ lifecycle methods in order they are called
 #### Avoid "Can not read prop of undefined". Use [ramda pathOr method](http://ramdajs.com/docs/#pathOr) or atleast do check
 
 ###### Bad:
-```
+```javascript
 object.nested.prop
 ```
 ###### Good:
-```
+```javascript
 pathOr('', ['nested', 'prop'], object)
 ```
-```
+```javascript
 if (object && object.nested) {
   object.nested.prop
 }
@@ -305,7 +305,7 @@ if (object && object.nested) {
 #### Do NOT mutate. Use [ramda clone](http://ramdajs.com/docs/#clone) or ES6 destructure
 
 ###### Bad:
-```
+```javascript
 1. Object copy
 obj1 = obj2
 
@@ -319,7 +319,7 @@ arr.push()
 arr.splice(2, 1)
 ```
 ###### Good:
-```
+```javascript
 1. Object copy
 obj1 = clone(obj2)
 obj1 = { ...obj2 }
@@ -339,7 +339,7 @@ arr = arr.filter((item, i) => i !== indexToDelete)
 #### Use ternary operator
 
 ###### Bad:
-```
+```javascript
 if (condition) {
   return a
 } else {
@@ -347,7 +347,7 @@ if (condition) {
 }
 ```
 ###### Good:
-```
+```javascript
 return condition
   ? a
   : b
@@ -358,14 +358,14 @@ return condition
 #### Don't forget to stop listening for eventBus event in beforeDestroy
 
 ###### Bad:
-```
+```javascript
 created () {
   // start listening
   this.$bus.$on('modalChangeVisibility', ...)
 }
 ```
 ###### Good:
-```
+```javascript
 created () {
   // start listening
   this.$bus.$on('modalChangeVisibility', ...)
@@ -383,13 +383,13 @@ beforeDestroy () {
 #### Mostly start mutation name from `SET`
 
 ###### Bad:
-```
+```javascript
 [types.GET_FOO]
 [types.NAME_FOO]
 [types.FOO]
 ```
 ###### Good:
-```
+```javascript
 [types.SET_FOO]
 [types.UPDATE_FOO]
 [types.ADD_TO_FOO]
@@ -400,12 +400,12 @@ beforeDestroy () {
 #### Mostly start action name from `fetch`, `post`, `update`, `delete`
 
 ###### Bad:
-```
+```javascript
 getItems
 itemDelete
 ```
 ###### Good:
-```
+```javascript
 fetchItems
 updateItem
 deleteItem
