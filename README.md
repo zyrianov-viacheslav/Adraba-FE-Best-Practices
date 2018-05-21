@@ -15,7 +15,7 @@ Frameworks and libraries:
 - [Vue](/vue/README.md)
 
 ### Usefult instruments
-There are a lot of online instruments that may
-
+There are a lot of online instruments that may help in day to day work...
 
 ### Related to FE material
+Here will be material related to the UI/UX and about in development in general
