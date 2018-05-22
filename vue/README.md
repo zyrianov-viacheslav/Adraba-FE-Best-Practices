@@ -5,6 +5,7 @@ We follow official styleguide and best practices:
 
 - [Official style guide](https://vuejs.org/v2/style-guide/)
 - [Common mistakes in Templates](./mistakesInTemplate.md)
+- [Common mistakes in Script and Store](./mistakesInScript.md)
 
 ### Useful resources in learning Vue
 First of all please read official documentation, it will help you to understand in depth whats going on under the hood in most situations.
@@ -22,6 +23,7 @@ Also there a lot of tips and trick that you may find on youtube and in articles:
 - [Renderless Components in Vue.js](https://adamwathan.me/renderless-components-in-vuejs/) Article
 - [Advanced Fine-Grained Control of Vue.js Components](https://egghead.io/courses/advanced-fine-grained-control-of-vue-js-components) Video
 - [Offline-First Progressive Web Apps (PWA) in Vue.js](https://egghead.io/courses/offline-first-progressive-web-apps-pwa-in-vue-js) Video
+- [Vue file upload (axios and tips)](https://www.youtube.com/watch?v=VqnJwh6E9ak) Video
 
 ### Project structure and workflow
 All our projects are creted via Vue-cli with `webpack` template
