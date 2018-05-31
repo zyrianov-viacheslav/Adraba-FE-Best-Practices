@@ -120,6 +120,19 @@
 <br><br>
 
 
+#### Using the “Mustache” syntax
+
+###### Bad:
+```html
+  <div>{{text}}</div>
+```
+###### Good:
+```html
+  <div>{{ text }}</div>
+```
+<br><br>
+
+
 #### Split a lot of markup with comments
 
 ###### Bad:
