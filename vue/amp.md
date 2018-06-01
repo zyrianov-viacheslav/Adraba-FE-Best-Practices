@@ -56,7 +56,7 @@ The function can be found in `~/utils/ampify.js`.
 Here is an example function that will apply general requirements to the output HTML of the page.
 Note that this parser is not in it's final form and later it can be extended with tags replacement or any other functionality, depending on requirements and results of AMP validation.
 
-```
+```javascript
 /**
  * Function takes Nuxt rendered HTML and modifies it to AMP requirements, which can be found:
  * https://www.ampproject.org/docs/fundamentals/spec#required-markup
