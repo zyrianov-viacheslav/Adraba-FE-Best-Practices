@@ -69,7 +69,7 @@
 
   // ...
   isLogedIn () {
-    return accessToken && user.data
+    return this.accessToken && this.user.data
   }
 ```
 <br><br>
