@@ -71,7 +71,7 @@ return condition
 <br><br>
 
 
-#### Skip brackets in arrow functions if it is posible
+#### Skip brackets in arrow functions if it is possible
 
 ###### Bad:
 ```javascript
