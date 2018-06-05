@@ -14,6 +14,9 @@ Frameworks and libraries:
 - [React + React Native](/react/README.md)
 - [Vue](/vue/README.md)
 
+Git:
+- [workflow](/git/README.md)
+
 ### Usefult instruments
 There are a lot of online instruments that may help in day to day work...
 
