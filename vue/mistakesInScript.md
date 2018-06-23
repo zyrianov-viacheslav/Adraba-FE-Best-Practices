@@ -1,5 +1,40 @@
 ## Script
 
+#### Always same component name
+
+###### Bad:
+```javascript
+  // File(folder) name
+  AButton
+
+  // component name (this name will be in Vue debugger)
+  name: 'random-name'
+
+  // import
+  import AButton from '~/components/AButton'
+  components: { AButton }
+
+  // usage
+  <a-button />
+```
+###### Good:
+```javascript
+  // File(folder) name
+  AButton
+
+  // component name
+  name: 'AButton'
+
+  // import
+  import AButton from '~/components/AButton'
+  components: { AButton }
+
+  // usage
+  <AButton />
+```
+<br><br>
+
+
 #### Use single quotes and backticks instead of double quotes
 
 ###### Bad:
