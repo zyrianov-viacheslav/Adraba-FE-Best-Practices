@@ -1,5 +1,40 @@
 ## Script
 
+#### Always same component name
+
+###### Bad:
+```javascript
+  // File(folder) name
+  AButton
+
+  // component name (this name will be in Vue debugger)
+  name: 'random-name'
+
+  // import
+  import AButton from '~/components/AButton'
+  components: { AButton }
+
+  // usage
+  <a-button />
+```
+###### Good:
+```javascript
+  // File(folder) name
+  AButton
+
+  // component name
+  name: 'AButton'
+
+  // import
+  import AButton from '~/components/AButton'
+  components: { AButton }
+
+  // usage
+  <AButton />
+```
+<br><br>
+
+
 #### Use single quotes and backticks instead of double quotes
 
 ###### Bad:
@@ -98,19 +133,34 @@ lifecycle methods in order they are called
 ```javascript
 created () {
   // start listening
-  this.$bus.$on('modalChangeVisibility', ...)
+  this.$bus.$on('busEventName', ...)
 }
 ```
 ###### Good:
 ```javascript
 created () {
   // start listening
-  this.$bus.$on('modalChangeVisibility', ...)
+  this.$bus.$on('busEventName', ...)
 },
 beforeDestroy () {
   // stop listening (don't pass callback in $off)
-  this.$bus.$off('modalChangeVisibility')
+  this.$bus.$off('busEventName')
 }
+```
+<br><br>
+
+
+#### Use specific `$bus` events names to avoid side-effects
+
+###### Bad:
+```javascript
+this.$bus.$on('onError', ...)
+this.$bus.$on('onFail', ...)
+```
+###### Good:
+```javascript
+this.$bus.$on('registrationStepOneFail', ...)
+this.$bus.$on('logInModalVisibilityChange', ...)
 ```
 <br><br>
 
@@ -148,3 +198,4 @@ updateItem
 deleteItem
 ```
 <br><br>
+
