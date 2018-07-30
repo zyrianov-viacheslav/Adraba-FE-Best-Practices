@@ -199,3 +199,19 @@ deleteItem
 ```
 <br><br>
 
+
+#### Mostly start getter name from `get`
+
+###### Bad:
+```javascript
+user
+isAuthorized
+accessToken
+```
+###### Good:
+```javascript
+getUser
+getIsAuthorized
+getAccessToken
+```
+<br><br>
